@@ -1,4 +1,5 @@
 # Calculadora básica en Python con comentarios detallados en español
+import os
 
 # Función para sumar dos números
 def suma(a, b):
@@ -17,7 +18,12 @@ def division(a, b):
     if b == 0:
         print("Error: División por cero")  # Error si el denominador es cero
         return None
-    return a / b  # Retorna la división de a por b
+    else:
+        return a / b  # Retorna la división de a por b
+
+# Función para comparar dos números
+def comparar(a, b):
+    print (a is b)
 
 # Función principal para interactuar con el usuario
 def calculadora():
@@ -42,11 +48,12 @@ def calculadora():
     elif eleccion == '3':
         print(f"La multiplicación de {num1} y {num2} es {multiplicacion(num1, num2)}")
     elif eleccion == '4':
-        print(f"La división de {num1} y {num2} es {division(num1, num2)}")
+        if num2 != 0:
+            print(f"La división de {num1} y {num2} es {division(num1, num2)}")
+        else:
+            print("Error: No se puede dividir por cero.")
     else:
         print("Elección inválida")  # Error si la elección no es válida
-
-# Aquí hay algunas prácticas incorrectas intencionales para que SonarLint las detecte
 
 # Variable global innecesaria
 resultado = 0
@@ -56,9 +63,10 @@ def operacion_compleja(a, b):
     for i in range(5):
         for j in range(3):
             if i == 3 and j == 2:
-                resultado = a * b  # Uso innecesario de una variable global
+                resultado = a * b * 12345
             else:
-                resultado = a + b  # Uso innecesario de una variable global
+                resultado = a + b * 67890
+    return True
     return resultado
 
 # Llamar a la función principal
